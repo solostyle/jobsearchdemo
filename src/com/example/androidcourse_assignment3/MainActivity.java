@@ -1,6 +1,8 @@
 package com.example.androidcourse_assignment3;
 
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.List;
 
 import org.apache.http.HttpResponse;
@@ -113,9 +115,19 @@ public class MainActivity extends Activity implements OnClickListener {
 		InputStream stream = null;
         String url = "http://api.careerbuilder.com/v2/jobsearch?DeveloperKey=WDT85BK6CPVTLH3RDHR6";
         
-        url = url.concat("&Keywords=" + params[0]);
+        try {
+			url = url.concat("&Keywords=" + URLEncoder.encode(params[0].toString().trim(), "utf-8"));
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
         if (params.length >= 2) {
-        	url = url.concat("&Location=" + params[1]);
+        	try {
+				url = url.concat("&Location=" + URLEncoder.encode(params[1].toString().trim(), "utf-8"));
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
         }
         
         HttpParams httpParams = new BasicHttpParams();
