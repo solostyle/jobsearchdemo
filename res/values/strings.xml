@@ -8,10 +8,12 @@
     <string name="submitLabel">Search</string>
     
     <string name="title_activity_jobsList">List of Jobs</string>
-    <string name="jobTitle">job title example</string>
-    <string name="jobPoster">company example</string>
-    <string name="jobLocation">location example</string>
+    <string name="jobTitle">job title</string>
+    <string name="jobPoster">company</string>
+    <string name="jobLocation">location</string>
     
     <string name="title_activity_jobDetails">Job Details</string>
+    <string name="jobDesc">description teaser</string>
+    <string name="jobPostedTime">posted time</string>
 
 </resources>

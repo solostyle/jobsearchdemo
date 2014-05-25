@@ -23,5 +23,11 @@ public class JobDetailsActivity extends Activity {
 		
 		TextView locationView = (TextView) findViewById(R.id.textView3);
 		locationView.setText(job.getLocation());
+		
+		TextView descView = (TextView) findViewById(R.id.textView4);
+		descView.setText(job.getDesc());
+		
+		TextView postedTimeView = (TextView) findViewById(R.id.textView5);
+		postedTimeView.setText(job.getPostedTime());
     }
 }
