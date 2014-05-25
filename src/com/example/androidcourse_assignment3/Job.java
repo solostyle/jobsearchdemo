@@ -14,7 +14,13 @@ public class Job implements Parcelable {
 		this.title = title;
 		this.location = location;
 	}
-
+    // example constructor that takes a Parcel and gives you an object populated with its values
+    public Job(Parcel source) {
+        company = source.readString();
+        title = source.readString();
+        location = source.readString();
+    }
+    
 	public String getCompany() {
 		return this.company;
 	}
@@ -40,6 +46,7 @@ public class Job implements Parcelable {
 
     // this is used to regenerate your object. All Parcelables must have a CREATOR that implements these two methods
     public static final Parcelable.Creator<Job> CREATOR = new Parcelable.Creator<Job>() {
+    	
         public Job createFromParcel(Parcel in) {
             return new Job(in);
         }
@@ -48,11 +55,4 @@ public class Job implements Parcelable {
             return new Job[size];
         }
     };
-
-    // example constructor that takes a Parcel and gives you an object populated with its values
-    private Job(Parcel source) {
-        company = source.readString();
-        title = source.readString();
-        location = source.readString();
-    }
 }

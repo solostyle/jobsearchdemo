@@ -30,6 +30,10 @@ public class JobsListActivity extends ListActivity {
         Job job = (Job) getListAdapter().getItem(position);
         String title = (String) job.getTitle();
         Toast.makeText(this, "Clicked on: " + " " + title, Toast.LENGTH_LONG).show();
+        
+        Intent intent = new Intent(JobsListActivity.this, JobDetailsActivity.class);
+		intent.putExtra("JOB_DETAILS", job);
+        startActivity(intent);
     }
 	
 	
