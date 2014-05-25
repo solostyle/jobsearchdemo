@@ -1,0 +1,12 @@
+<resources>
+
+    <string name="app_name">Job Search</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="searchLabel">Enter your keyword</string>
+    <string name="submitLabel">Submit</string>
+    <string name="title_activity_jobsList">JobsListActivity</string>
+    <string name="jobTitle">test</string>
+    <string name="jobPoster">test</string>
+
+</resources>
