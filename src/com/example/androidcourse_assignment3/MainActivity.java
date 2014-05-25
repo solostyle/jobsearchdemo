@@ -18,6 +18,7 @@ import org.apache.http.protocol.HttpContext;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -115,20 +116,14 @@ public class MainActivity extends Activity implements OnClickListener {
 		InputStream stream = null;
         String url = "http://api.careerbuilder.com/v2/jobsearch?DeveloperKey=WDT85BK6CPVTLH3RDHR6";
         
-        try {
-			url = url.concat("&Keywords=" + URLEncoder.encode(params[0].toString().trim(), "utf-8"));
-		} catch (UnsupportedEncodingException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-        if (params.length >= 2) {
-        	try {
-				url = url.concat("&Location=" + URLEncoder.encode(params[1].toString().trim(), "utf-8"));
-			} catch (UnsupportedEncodingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-        }
+        String keywordString = params[0].toString();
+        String locationString = params[1].toString();
+        
+        String uri = Uri.parse(url)
+            .buildUpon()
+            .appendQueryParameter("Keywords", keywordString)
+            .appendQueryParameter("&Location", locationString)
+            .build().toString();
         
         HttpParams httpParams = new BasicHttpParams();
         HttpConnectionParams.setConnectionTimeout(httpParams, 10000);
@@ -136,7 +131,7 @@ public class MainActivity extends Activity implements OnClickListener {
         HttpClient httpClient = new DefaultHttpClient(httpParams);
         
         HttpContext context = new BasicHttpContext();
-        HttpGet request = new HttpGet(url);
+        HttpGet request = new HttpGet(uri);
         
         try {
         	HttpResponse response = httpClient.execute(request, context);
