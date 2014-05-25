@@ -39,7 +39,6 @@ public class MainActivity extends Activity implements OnClickListener {
     }
     
     public void onClick(View v) {
-    	//detect the view that was "clicked"
         switch(v.getId())
         {
           case R.id.button1:
