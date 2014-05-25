@@ -14,6 +14,7 @@ import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -27,6 +28,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	
 	private String keywordSearch;
 	private String locationSearch;
+	public ProgressDialog dialog;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -92,11 +94,15 @@ public class MainActivity extends Activity implements OnClickListener {
 	        	Intent intent = new Intent(MainActivity.this, JobsListActivity.class);
 	    		intent.putExtra("JOBS_ARRAY", jobs);
 	            startActivity(intent);
+	        } else {
+	        	// display no results message
 	        }
+	        dialog.hide();
         }
 
         @Override
         protected void onPreExecute() {
+        	dialog = ProgressDialog.show(MainActivity.this, "", "Doing stuff. Please wait...", true);
         }
 
         @Override
