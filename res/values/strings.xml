@@ -6,9 +6,12 @@
     <string name="keywordLabel">Keyword</string>
     <string name="locationLabel">Location</string>
     <string name="submitLabel">Search</string>
-    <string name="title_activity_jobsList">JobsListActivity</string>
+    
+    <string name="title_activity_jobsList">List of Jobs</string>
     <string name="jobTitle">job title example</string>
     <string name="jobPoster">company example</string>
     <string name="jobLocation">location example</string>
+    
+    <string name="title_activity_jobDetails">Job Details</string>
 
 </resources>

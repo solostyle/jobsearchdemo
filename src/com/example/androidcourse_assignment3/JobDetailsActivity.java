@@ -12,6 +12,6 @@ public class JobDetailsActivity extends Activity {
         
         Bundle data = getIntent().getExtras();
         Job job = (Job) data.getParcelable("JOB_DETAILS");
-
+        setContentView(R.layout.activity_job_details);
     }
 }
