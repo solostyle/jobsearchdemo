@@ -125,7 +125,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
         @Override
         protected void onPreExecute() {
-        	dialog = ProgressDialog.show(MainActivity.this, "", "Doing stuff. Please wait...", true);
+        	dialog = ProgressDialog.show(MainActivity.this, "", "Searching", true);
         }
 
         @Override
