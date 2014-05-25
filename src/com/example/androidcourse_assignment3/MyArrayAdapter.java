@@ -30,6 +30,9 @@ public class MyArrayAdapter extends ArrayAdapter<Job> {
 		TextView companyView = (TextView) v.findViewById(R.id.textView2);
 		companyView.setText(this.getItem(position).getCompany());
 		
+		TextView locationView = (TextView) v.findViewById(R.id.textView3);
+		locationView.setText(this.getItem(position).getLocation());
+		
 		return v;
 	}
 

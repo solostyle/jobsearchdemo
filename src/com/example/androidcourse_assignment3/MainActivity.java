@@ -26,6 +26,7 @@ import android.widget.TextView;
 public class MainActivity extends Activity implements OnClickListener {
 	
 	private String keywordSearch;
+	private String locationSearch;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,9 +41,12 @@ public class MainActivity extends Activity implements OnClickListener {
         switch(v.getId())
         {
           case R.id.button1:
-        	  TextView searchTxt = (TextView)this.findViewById(R.id.editText1);
-        	  keywordSearch = (String) searchTxt.getText().toString();
-              new PerformSearch().execute(keywordSearch);
+        	  TextView keywordTxt = (TextView)this.findViewById(R.id.editText1);
+        	  keywordSearch = (String) keywordTxt.getText().toString();
+        	  
+        	  TextView locationTxt = (TextView)this.findViewById(R.id.editText2);
+        	  locationSearch = (String) locationTxt.getText().toString();
+              new PerformSearch().execute(keywordSearch, locationSearch);
           break;
 
         }
@@ -52,7 +56,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
 		@Override
 		protected XMLNode doInBackground(String... params) {
-			InputStream stream = search(params[0]);
+			InputStream stream = search(params);
 			XMLNode doc = new XMLNode(stream);
 			return doc;
 		}
@@ -66,6 +70,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	            Job[] jobs = new Job[limit];
 	        	String title = "";
 	        	String company = "";
+	        	String location = "";
 	    		for (int i = 0; i<limit; i++) {
 	    			XMLNode node = nodes.get(i);
 	    			XMLNode companyNode = node.nodeForXpath("./Company");
@@ -77,7 +82,12 @@ public class MainActivity extends Activity implements OnClickListener {
 	    			if(titleNode != null) {
 	    				title = titleNode.getElementStringValue();
 	    			}
-	    			jobs[i] = (Job) new Job(company, title);
+	    			
+	    			XMLNode locationNode = node.nodeForXpath("./Location");
+	    			if (locationNode != null) {
+	    				location = locationNode.getElementStringValue();
+	    			}
+	    			jobs[i] = (Job) new Job(company, title, location);
 	    		}
 	        	Intent intent = new Intent(MainActivity.this, JobsListActivity.class);
 	    		intent.putExtra("JOBS_ARRAY", jobs);
@@ -94,10 +104,14 @@ public class MainActivity extends Activity implements OnClickListener {
         }
 	}
 
-	private InputStream search(CharSequence keywordSearch) {
+	private InputStream search(CharSequence... params) {
 		InputStream stream = null;
         String url = "http://api.careerbuilder.com/v2/jobsearch?DeveloperKey=WDT85BK6CPVTLH3RDHR6";
-        url = url.concat("&Keywords=" + keywordSearch);
+        
+        url = url.concat("&Keywords=" + params[0]);
+        if (params.length >= 2) {
+        	url = url.concat("&Location=" + params[1]);
+        }
         
         HttpParams httpParams = new BasicHttpParams();
         HttpConnectionParams.setConnectionTimeout(httpParams, 10000);

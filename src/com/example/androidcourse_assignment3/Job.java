@@ -7,10 +7,12 @@ public class Job implements Parcelable {
 	
 	public String company;
 	public String title;
+	public String location;
 
-	public Job(String company, String title) {
+	public Job(String company, String title, String location) {
 		this.company = company;
 		this.title = title;
+		this.location = location;
 	}
 
 	public String getCompany() {
@@ -19,6 +21,10 @@ public class Job implements Parcelable {
 	
 	public String getTitle() {
 		return this.title;
+	}
+	
+	public String getLocation() {
+		return this.location;
 	}
     // 99.9% of the time you can just ignore this
     public int describeContents() {
@@ -29,6 +35,7 @@ public class Job implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(company);
         dest.writeString(title);
+        dest.writeString(location);
     }
 
     // this is used to regenerate your object. All Parcelables must have a CREATOR that implements these two methods
@@ -46,5 +53,6 @@ public class Job implements Parcelable {
     private Job(Parcel source) {
         company = source.readString();
         title = source.readString();
+        location = source.readString();
     }
 }

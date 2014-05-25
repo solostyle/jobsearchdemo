@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:padding="5dp"
         android:text="@string/jobTitle"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/blue" />
 
     <TextView
@@ -21,6 +21,16 @@
         android:paddingLeft="5dp"
         android:text="@string/jobPoster"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/orange" />
+        android:textColor="@color/black"
+        android:typeface="normal" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:text="@string/jobLocation"
+        android:textColor="@color/gray" />
 
 </LinearLayout>

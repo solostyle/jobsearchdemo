@@ -3,5 +3,6 @@
     <style name="AppTheme" parent="android:Theme.Light" />
     <color name="orange">#ffa500</color>
     <color name="blue">#0820a5</color>
-
+    <color name="gray">#666666</color>
+	<color name="black">#000000</color>
 </resources>
