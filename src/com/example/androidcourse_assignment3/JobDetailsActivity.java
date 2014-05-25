@@ -2,6 +2,7 @@ package com.example.androidcourse_assignment3;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.widget.TextView;
 
 public class JobDetailsActivity extends Activity {
@@ -29,5 +30,13 @@ public class JobDetailsActivity extends Activity {
 		
 		TextView postedTimeView = (TextView) findViewById(R.id.textView5);
 		postedTimeView.setText(job.getPostedTime());
+		
+		TextView jobLinkView = (TextView) findViewById(R.id.textView6);
+		jobLinkView.setText("<a href=\"" + job.getJobLink() + "\">View & Apply to Job</a>");
+		jobLinkView.setMovementMethod(LinkMovementMethod.getInstance());
+		
+		TextView simJobsLinkView = (TextView) findViewById(R.id.textView7);
+		simJobsLinkView.setText("<a href=\"" + job.getSimJobsLink() + "\">Similar Jobs</a>");
+		simJobsLinkView.setMovementMethod(LinkMovementMethod.getInstance());
     }
 }

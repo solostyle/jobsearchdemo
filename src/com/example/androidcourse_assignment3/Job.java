@@ -10,21 +10,27 @@ public class Job implements Parcelable {
 	public String location;
 	public String desc;
 	public String postedTime;
+	public String jobLink;
+	public String simJobsLink;
 
-	public Job(String company, String title, String location, String desc, String postedTime) {
+	public Job(String company, String title, String location, String desc, 
+			String postedTime, String jobLink, String simJobsLink) {
 		this.company = company;
 		this.title = title;
 		this.location = location;
 		this.desc = desc;
 		this.postedTime = postedTime;
+		this.jobLink = jobLink;
+		this.simJobsLink = simJobsLink;
 	}
-    // example constructor that takes a Parcel and gives you an object populated with its values
     public Job(Parcel source) {
         company = source.readString();
         title = source.readString();
         location = source.readString();
         desc = source.readString();
         postedTime = source.readString();
+        jobLink = source.readString();
+        simJobsLink = source.readString();
     }
     
 	public String getCompany() {
@@ -46,11 +52,16 @@ public class Job implements Parcelable {
 	public String getPostedTime() {
 		return this.postedTime;
 	}
+	public String getJobLink() {
+		return this.jobLink;
+	}
+	public String getSimJobsLink() {
+		return this.simJobsLink;
+	}
     // 99.9% of the time you can just ignore this
     public int describeContents() {
         return 0;
     }
-
     // write your object's data to the passed-in Parcel
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(company);
@@ -58,6 +69,8 @@ public class Job implements Parcelable {
         dest.writeString(location);
         dest.writeString(desc);
         dest.writeString(postedTime);
+        dest.writeString(jobLink);
+        dest.writeString(simJobsLink);
     }
 
     // this is used to regenerate your object. All Parcelables must have a CREATOR that implements these two methods

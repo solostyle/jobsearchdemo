@@ -75,6 +75,8 @@ public class MainActivity extends Activity implements OnClickListener {
 	        	String location = "";
 	        	String desc = "";
 	        	String postedTime = "";
+	        	String jobLink = "";
+	        	String simJobsLink = "";
 	    		for (int i = 0; i<limit; i++) {
 	    			XMLNode node = nodes.get(i);
 	    			XMLNode companyNode = node.nodeForXpath("./Company");
@@ -101,7 +103,16 @@ public class MainActivity extends Activity implements OnClickListener {
 	    			if (pTNode != null) {
 	    				postedTime = pTNode.getElementStringValue();
 	    			}
-	    			jobs[i] = (Job) new Job(company, title, location, desc, postedTime);
+	    			
+	    			XMLNode jobLinkNode = node.nodeForXpath("./JobDetailsURL");
+	    			if (jobLinkNode != null) {
+	    				jobLink = jobLinkNode.getElementStringValue();
+	    			}
+	    			XMLNode simJobsLinkNode = node.nodeForXpath("./SimilarJobsURL");
+	    			if (simJobsLinkNode != null) {
+	    				simJobsLink = simJobsLinkNode.getElementStringValue();
+	    			}
+	    			jobs[i] = (Job) new Job(company, title, location, desc, postedTime, jobLink, simJobsLink);
 	    		}
 	        	Intent intent = new Intent(MainActivity.this, JobsListActivity.class);
 	    		intent.putExtra("JOBS_ARRAY", jobs);

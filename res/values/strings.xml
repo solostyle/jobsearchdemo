@@ -15,5 +15,7 @@
     <string name="title_activity_jobDetails">Job Details</string>
     <string name="jobDesc">description teaser</string>
     <string name="jobPostedTime">posted time</string>
+    <string name="jobLink">link to this job</string>
+    <string name="simJobsLink">link to similar jobs</string>
 
 </resources>

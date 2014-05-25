@@ -21,15 +21,17 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int button1=0x7f080006;
-        public static final int editText1=0x7f080005;
-        public static final int editText2=0x7f080007;
-        public static final int menu_settings=0x7f080008;
+        public static final int button1=0x7f080008;
+        public static final int editText1=0x7f080007;
+        public static final int editText2=0x7f080009;
+        public static final int menu_settings=0x7f08000a;
         public static final int textView1=0x7f080000;
         public static final int textView2=0x7f080001;
         public static final int textView3=0x7f080002;
         public static final int textView4=0x7f080003;
         public static final int textView5=0x7f080004;
+        public static final int textView6=0x7f080005;
+        public static final int textView7=0x7f080006;
     }
     public static final class layout {
         public static final int activity_job_details=0x7f030000;
@@ -42,6 +44,7 @@ public final class R {
     public static final class string {
         public static final int app_name=0x7f040000;
         public static final int jobDesc=0x7f04000b;
+        public static final int jobLink=0x7f04000d;
         public static final int jobLocation=0x7f040009;
         public static final int jobPostedTime=0x7f04000c;
         public static final int jobPoster=0x7f040008;
@@ -49,6 +52,7 @@ public final class R {
         public static final int keywordLabel=0x7f040003;
         public static final int locationLabel=0x7f040004;
         public static final int menu_settings=0x7f040001;
+        public static final int simJobsLink=0x7f04000e;
         public static final int submitLabel=0x7f040005;
         public static final int title_activity_jobDetails=0x7f04000a;
         public static final int title_activity_jobsList=0x7f040006;
